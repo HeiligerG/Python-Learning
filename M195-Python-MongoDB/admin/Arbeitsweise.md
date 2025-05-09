@@ -9,6 +9,7 @@ Dies ist ein **zusätzliches `arbeitsweise.md`**, das klar vorgibt, **wie beim B
 ```
 
 M195-Python-MongoDB/
+├── admin/                   # markdown
 ├── m195/                    # venv
 ├── aufgaben/                # einzelne Aufgaben als Dateien oder Ordner
 │   ├── 2\_1\_db\_explorer.py
