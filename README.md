@@ -1,70 +1,109 @@
 # Alle anleitungen
 
-## M195-Python-MongoDB
-
-Um unter **Windows** mit **VS Code** Python-Aufgaben in einer **virtuellen Umgebung (venv)** zu machen, kannst du folgende Schritte befolgen. Das ist ein bewährter Weg, um deine Abhängigkeiten für jede Aufgabe oder jedes Projekt sauber zu halten.
+Dies ist eine **klare Schritt-für-Schritt-Anleitung**, wie du an deinem Python-MongoDB-Projekt arbeitest – vom Start bis zum Ausführen. Ideal für Schulaufgaben oder eigenes Üben unter Windows mit VS Code und `venv`.
 
 ---
 
-### ✅ Voraussetzungen:
+### ✅ **Einmalig: Projekt einrichten**
 
-* **Python** muss installiert sein ([Download von python.org](https://www.python.org/))
-* **VS Code** muss installiert sein
-* Die **Python-Erweiterung** in VS Code muss aktiviert sein
+#### 🔹 1. **Projektordner erstellen**
+
+Zum Beispiel auf dem Desktop:
+
+```plaintext
+C:\Users\gggig\Desktop\M195-Python-MongoDB
+```
+
+#### 🔹 2. **VS Code öffnen**
+
+Öffne den **gesamten Ordner** in VS Code:
+
+* Rechtsklick auf den Ordner → „Mit Code öffnen“
+* Oder: `Datei > Ordner öffnen` in VS Code
+
+#### 🔹 3. **Terminal öffnen**
+
+In VS Code: `Strg + ö` oder `Terminal > Neues Terminal`
+
+#### 🔹 4. **Virtuelle Umgebung erstellen**
+
+Im Terminal:
+
+```bash
+python -m venv m195
+```
+
+#### 🔹 5. **venv aktivieren**
+
+```bash
+.\m195\Scripts\activate
+```
+
+→ Jetzt siehst du z. B. `(m195)` im Terminal
+
+#### 🔹 6. **Pymongo installieren**
+
+```bash
+pip install pymongo
+```
+
+#### 🔹 7. **Test-Skript erstellen**
+
+Erstelle eine Datei im Projektordner, z. B. `mongodb_test.py`. Inhalt:
+
+```python
+from pymongo import MongoClient
+
+connection_string = "mongodb://localhost:27017/"
+client = MongoClient(connection_string)
+
+print("Verfügbare Datenbanken:")
+print(client.list_database_names())
+```
 
 ---
 
-### 🔧 Schritte zur Nutzung von `venv` in VS Code:
+### 🔁 **Jedes Mal, wenn du daran arbeiten willst:**
 
-1. **Projektordner anlegen**
-   Erstelle einen neuen Ordner für deine Schulaufgabe, z. B. `schulaufgabe_01`.
+1. **Projektordner öffnen in VS Code**
+   → Öffne wieder `M195-Python-MongoDB`
 
-2. **VS Code in diesem Ordner öffnen**
+2. **Terminal öffnen (Strg + ö)**
 
-   * Öffne den Ordner direkt in VS Code (Rechtsklick → „Mit Code öffnen“ oder in VS Code: `Datei > Ordner öffnen...`).
-
-3. **Terminal öffnen**
-   In VS Code: `Strg + ö` oder `Terminal > Neues Terminal`.
-
-4. **Virtuelle Umgebung erstellen**
-   Im Terminal eingeben:
+3. **Virtuelle Umgebung aktivieren:**
 
    ```bash
-   python -m venv venv
+   .\m195\Scripts\activate
    ```
 
-   Dadurch wird ein Unterordner `venv` mit der virtuellen Umgebung erstellt.
-
-5. **Virtuelle Umgebung aktivieren**
-   Im Terminal eingeben:
+4. **Python-Datei ausführen**
 
    ```bash
-   .\venv\Scripts\activate
-   ```
-
-   Danach siehst du im Terminal `(venv)` vor dem Pfad – das bedeutet, die Umgebung ist aktiv.
-
-6. **Python-Interpreter auswählen (einmalig)**
-
-   * `Strg + Shift + P` drücken → **„Python: Interpreter auswählen“** eingeben
-   * Wähle den Eintrag mit dem Pfad `./venv/Scripts/python.exe` aus
-
-7. **Jetzt kannst du loslegen**
-   Erstelle eine `.py`-Datei (z. B. `aufgabe1.py`) und beginne zu programmieren.
-
-8. **(Optional) Pakete installieren**
-   Wenn du Pakete wie `numpy` oder `requests` brauchst:
-
-   ```bash
-   pip install numpy
+   python mongodb_test.py
    ```
 
 ---
 
-### 🧹 Zum Beenden:
+### 🧼 Zum Beenden
 
-* Tippe `deactivate` im Terminal, um die virtuelle Umgebung zu verlassen.
+Wenn du fertig bist:
+
+```bash
+deactivate
+```
 
 ---
 
-Möchtest du ein kleines Beispielprojekt als Vorlage dazu haben?
+### 💡 Optional: Pakete sichern
+
+Falls du mehrere Pakete installiert hast, kannst du eine `requirements.txt` erstellen:
+
+```bash
+pip freeze > requirements.txt
+```
+
+Dann kannst du später alles wieder installieren mit:
+
+```bash
+pip install -r requirements.txt
+```
