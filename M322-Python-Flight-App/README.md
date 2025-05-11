@@ -22,6 +22,9 @@ Dieses Desktop‑Projekt entstand als **Schulprojekt** im Modul *Software Engine
 Vier Flughäfen (ZRH | FRA | LHR | CDG) teilen sich eine feste Flotte von Flugzeugen.
 Das Dashboard zeigt Live‑Status der Flüge, aktuelle Ticketverkäufe sowie Zähler für En‑Route, Delay, Boarding, Maintenance und Crash.
 
+**[Docs](/M322-Python-Flight-App/admin/airport_sim_docs/01_architektur.md)**
+**[Szenario](/M322-Python-Flight-App/admin/Szenario_airport_sim.md)**
+
 ---
 
 ### Hauptfunktionen
