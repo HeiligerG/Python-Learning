@@ -73,7 +73,7 @@ class AirportSim(QtCore.QObject):
         # Crash‑check und Bewegungen
         for f in list(self.flights):
             if f.status == "En Route":
-                # Crash‑Chance steigt mit Verschleiß
+                # Crash‑Chance steigt mit Verschleiss
                 if random.random() < (CRASH_BASE_PROB + f.wear / 800):
                     f.status = "Crash"
                     self.flights_changed.emit()
@@ -118,7 +118,7 @@ class AirportSim(QtCore.QObject):
             self.free_gates[f.dest].append(f.gate)
             self.free_gates[f.dest].sort()
             f.gate = None
-        # Verschleiß erhöhen
+        # Verschleiss erhöhen
         f.wear = min(100, f.wear + 5)
         # Nächster Flughafen im Ring
         next_idx = (AIRPORTS.index(f.dest) + 1) % len(AIRPORTS)
