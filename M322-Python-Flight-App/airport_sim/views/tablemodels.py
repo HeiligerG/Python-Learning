@@ -1,7 +1,15 @@
 
 from PySide6 import QtCore, QtGui
 from dataclasses import fields
-COLOR={"En Route":"#F39C12","Delay":"#E74C3C","At Gate":"#27AE60","Boarding":"#2980B9","Crash":"#8B0000"}
+COLOR = {
+    "En Route":   "#F39C12",
+    "Delay":      "#E74C3C",
+    "At Gate":    "#27AE60",
+    "Boarding":   "#2980B9",
+    "Maintenance":"#FFD700",   # Gelb
+    "Crash":      "#8B0000",
+}
+
 class Base(QtCore.QAbstractTableModel):
     def __init__(self,objs): super().__init__(); self.objs=objs; self.cols=[f.name for f in fields(objs[0])] if objs else []
     def rowCount(self,p=QtCore.QModelIndex()): return len(self.objs)

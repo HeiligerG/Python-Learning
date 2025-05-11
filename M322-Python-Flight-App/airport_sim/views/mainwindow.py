@@ -17,8 +17,8 @@ class MainWindow(QMainWindow):
         # top bar with counters and cleanup button
         topbar=QHBoxLayout()
         self.counter=QLabel(); self.counter.setAlignment(Qt.AlignCenter)
-        btn=QPushButton("Remove Crashes")
-        btn.clicked.connect(self.sim.remove_crashes)
+        btn = QPushButton("Send Crashes → Maintenance")
+        btn.clicked.connect(self.sim.handle_crashes)
         topbar.addWidget(self.counter); topbar.addWidget(btn)
         main.addLayout(topbar)
 
