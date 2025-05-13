@@ -15,3 +15,16 @@ else:
     print("\nVerfügbare Felder:")
     for key in sample.keys():
         print(f"- {key}: {type(sample[key])}")
+        
+def get_unique_boroughs():
+    """Alle einzigartigen Stadtbezirke ausgeben"""
+
+    boroughs = collection.distinct("borough")
+    
+    print("Stadtbezirke:")
+    for borough in boroughs:
+        print(f"- {borough}")
+    
+    return boroughs
+
+get_unique_boroughs()
