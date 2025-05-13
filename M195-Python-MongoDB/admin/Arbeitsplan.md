@@ -2,8 +2,8 @@
 
 ## ✅ Phase 1: Setup & Verbindung (Pflicht)
 
-- [ ] 1.1 Erkläre die Abkürzung ODM und deren Funktion
-- [ ] 1.2 Richte dein System ein, stelle Verbindung zu MongoDB her (Testprogramm)
+- [x] 1.1 Erkläre die Abkürzung ODM und deren Funktion
+- [x] 1.2 Richte dein System ein, stelle Verbindung zu MongoDB her (Testprogramm)
 
 ## ✅ Phase 2: Datenbankstruktur verstehen & anwenden (Pflicht)
 
