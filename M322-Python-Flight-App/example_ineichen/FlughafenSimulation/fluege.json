@@ -1,0 +1,20 @@
+[
+    {
+        "flugnummer": "LH123",
+        "typ": "Landung",
+        "status": "Gate belegt",
+        "gate": "Gate 2"
+    },
+    {
+        "flugnummer": "BA789",
+        "typ": "Landung",
+        "status": "Gate belegt",
+        "gate": "Gate 1"
+    },
+    {
+        "flugnummer": "DL987",
+        "typ": "Landung",
+        "status": "Wartung",
+        "gate": null
+    }
+]

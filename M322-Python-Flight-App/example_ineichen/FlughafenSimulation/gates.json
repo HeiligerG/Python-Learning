@@ -1,0 +1,14 @@
+[
+    {
+        "gate_id": "Gate 1",
+        "in_wartung": false
+    },
+    {
+        "gate_id": "Gate 2",
+        "in_wartung": false
+    },
+    {
+        "gate_id": "Gate 3",
+        "in_wartung": true
+    }
+]
