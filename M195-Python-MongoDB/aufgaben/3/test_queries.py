@@ -4,27 +4,26 @@ client = MongoClient('mongodb://localhost:27017')
 db = client['db_restaurants']
 collection = db['restaurants']
 
-sample = collection.find_one()
-
-if sample is None:
-    print("Kein Dokument in der Collection 'restaurants' gefunden.")
-else:
-    print("Beispiel-Restaurant:")
-    print(sample)
-
-    print("\nVerfügbare Felder:")
-    for key in sample.keys():
-        print(f"- {key}: {type(sample[key])}")
+def get_top_rated_restaurants():
+    """Top 3 Restaurants mit höchstem Durchschnitts-Score"""
+    pipeline = [
+        {"$unwind": "$grades"},
         
-def get_unique_boroughs():
-    """Alle einzigartigen Stadtbezirke ausgeben"""
-
-    boroughs = collection.distinct("borough")
+        {"$group": {
+            "_id": "$name",
+            "avg_score": {"$avg": "$grades.score"},
+            "restaurant_id": {"$first": "$_id"}
+        }},
+        
+        {"$sort": {"avg_score": -1}},
+        
+        {"$limit": 3}
+    ]
     
-    print("Stadtbezirke:")
-    for borough in boroughs:
-        print(f"- {borough}")
+    results = list(collection.aggregate(pipeline))
     
-    return boroughs
-
-get_unique_boroughs()
+    print("Top 3 Restaurants:")
+    for i, restaurant in enumerate(results, 1):
+        print(f"{i}. {restaurant['_id']} - Durchschnitt: {restaurant['avg_score']:.2f}")
+    
+    return results
