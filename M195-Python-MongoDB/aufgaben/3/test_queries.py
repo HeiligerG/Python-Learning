@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 client = MongoClient('mongodb://localhost:27017')
-db = client['db_restaurants']
+db = client['restaurants']
 collection = db['restaurants']
 
 def get_top_rated_restaurants():
@@ -27,3 +27,14 @@ def get_top_rated_restaurants():
         print(f"{i}. {restaurant['_id']} - Durchschnitt: {restaurant['avg_score']:.2f}")
     
     return results
+
+def get_unique_boroughs():
+    """Alle einzigartigen Stadtbezirke ausgeben"""
+
+    boroughs = collection.distinct("borough")
+    
+    print("Stadtbezirke:")
+    for borough in boroughs:
+        print(f"- {borough}")
+    
+    return boroughs

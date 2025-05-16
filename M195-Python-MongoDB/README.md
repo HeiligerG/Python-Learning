@@ -38,6 +38,11 @@ python -m venv m195
 ```bash
 .\m195\Scripts\activate
 ```
+oder wenn das venv venv heisst:
+
+```bash
+.\.venv\Scripts\Activate.ps1
+```
 
 → Jetzt siehst du z. B. `(m195)` im Terminal
 
