@@ -38,3 +38,34 @@ def get_unique_boroughs():
         print(f"- {borough}")
     
     return boroughs
+
+def find_nearest_restaurant(restaurant_name="Le Perigord"):
+    """Restaurant finden, das geografisch am nächsten liegt"""
+
+    collection.create_index([("address.coord", "2dsphere")])
+    
+    reference = collection.find_one({"name": restaurant_name})
+    
+    if not reference:
+        print(f"Restaurant '{restaurant_name}' nicht gefunden")
+        return None
+    
+    ref_coords = reference["address"]["coord"]
+    
+    nearest = collection.find({
+        "address.coord": {
+            "$near": {
+                "$geometry": {
+                    "type": "Point",
+                    "coordinates": ref_coords
+                }
+            }
+        },
+        "name": {"$ne": restaurant_name}
+    }).limit(1)
+    
+    result = list(nearest)[0]
+    print(f"- Name: {result['name']}")
+    print(f"- Adresse: {result['address']['street']}")
+    
+    return result

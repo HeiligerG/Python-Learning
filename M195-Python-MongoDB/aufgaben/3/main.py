@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from test_queries import get_top_rated_restaurants, get_unique_boroughs
+from test_queries import get_top_rated_restaurants, get_unique_boroughs, find_nearest_restaurant
 
 def main():
     client = MongoClient('mongodb://localhost:27017')
@@ -11,6 +11,9 @@ def main():
 
     print("\nTop-bewertete Restaurants:")
     get_top_rated_restaurants()
+
+    print("\nDas naheste Restaurant zu Le Perigord")
+    find_nearest_restaurant()
     
     client.close()
 
