@@ -20,7 +20,7 @@
 
 ## ✅ Phase 4: Connection-String sichern (Pflicht)
 
-- [ ] 4.1 Umgebungsvariable in Python auslesen (z. B. PATH)
+- [x] 4.1 Umgebungsvariable in Python auslesen (z. B. PATH)
 - [ ] 4.2 Verbindung zur Cloud-DB mit Connection-String aus Umgebungsvariable
 
 ## ✅ Phase 5: Systemmonitoring (Pflicht)
