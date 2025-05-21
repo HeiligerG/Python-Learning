@@ -7,16 +7,16 @@
 
 ## ✅ Phase 2: Datenbankstruktur verstehen & anwenden (Pflicht)
 
-- [ ] 2.1-2.4 Erstelle Explorer-Applikation (DB, Collection, Document)
-- [ ] 2.5-2.7 Ausnahmebehandlung einbauen (z. B. bei falscher Auswahl)
+- [x] 2.1-2.4 Erstelle Explorer-Applikation (DB, Collection, Document)
+- [x] 2.5-2.7 Ausnahmebehandlung einbauen (z. B. bei falscher Auswahl)
 
 ## ✅ Phase 3: CRUD auf Restaurant-DB (Pflicht)
 
-- [ ] 3.1 Einmalige Bezirke ausgeben
-- [ ] 3.2 Top 3 Restaurants nach Rating ausgeben
-- [ ] 3.3 Restaurant finden, das geografisch am nächsten bei „Le Perigord“ liegt
-- [ ] 3.4 Suchfunktion: Name & Küche
-- [ ] 3.5 Bewertung zu Restaurant hinzufügen (inkl. Datum speichern)
+- [x] 3.1 Einmalige Bezirke ausgeben
+- [x] 3.2 Top 3 Restaurants nach Rating ausgeben
+- [x] 3.3 Restaurant finden, das geografisch am nächsten bei „Le Perigord“ liegt
+- [x] 3.4 Suchfunktion: Name & Küche
+- [x] 3.5 Bewertung zu Restaurant hinzufügen (inkl. Datum speichern)
 
 ## ✅ Phase 4: Connection-String sichern (Pflicht)
 
