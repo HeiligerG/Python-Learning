@@ -25,10 +25,10 @@
 
 ## ✅ Phase 5: Systemmonitoring (Pflicht)
 
-- [ ] 5.1 Klasse „Power“ mit CPU/RAM + Zeitstempel erstellen
-- [ ] 5.2 CPU/RAM-Messungen jede Sekunde in MongoDB speichern
-- [ ] 5.3 Max. 10.000 Logs: ältere löschen
-- [ ] 5.4 Daten mit matplotlib grafisch darstellen
+- [x] 5.1 Klasse „Power“ mit CPU/RAM + Zeitstempel erstellen
+- [x] 5.2 CPU/RAM-Messungen jede Sekunde in MongoDB speichern
+- [x] 5.3 Max. 10.000 Logs: ältere löschen
+- [x] 5.4 Daten mit matplotlib grafisch darstellen
 
 ---
 
