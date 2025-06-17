@@ -12,8 +12,7 @@ M195-Python-MongoDB/
 ├── admin/                   # markdown
 ├── m195/                    # venv
 ├── aufgaben/                # einzelne Aufgaben als Dateien oder Ordner
-│   ├── 2\_1\_db\_explorer.py
-│   ├── 3\_1\_bezirke.py
+│   ├── 2\explorer.py
 │   └── ...
 ├── README.md                # Aufgabenplan
 ├── arbeitsweise.md          # Diese Datei
@@ -32,19 +31,20 @@ M195-Python-MongoDB/
 3. Virtuelle Umgebung aktivieren:
    ```bash
    .\m195\Scripts\activate
-
+   ```
 
 4. Neues Git-Branch erstellen für die Aufgabe:
 
    ```bash
-   git checkout -b aufgabe-3_1
+   git checkout -b aufgabe-X
    ```
 
 ---
 
 ### 🧩 Wenn du eine Aufgabe startest
 
-* Erstelle eine neue Datei z. B. `3_1_bezirke.py`
+* Erstelle ein neuen Ordner z. B. `/1` im aufgaben Ordner.
+* Erstelle eine neue Datei z. B. `bezirke.py`
 * Schreibe einen Kommentar mit:
 
   ```python
