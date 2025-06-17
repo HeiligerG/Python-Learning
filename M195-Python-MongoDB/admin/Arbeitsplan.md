@@ -34,7 +34,7 @@
 
 ## 🟡 Phase 6: DAO & Klassen (Optional)
 
-- [ ] 6.1 Methoden `update()` und `delete()` zu `Dao_room` hinzufügen
+- [x] 6.1 Methoden `update()` und `delete()` zu `Dao_room` hinzufügen
 - [ ] 6.2 DAO für Jokes mit `insert`, `get_category`, `delete` erstellen
 
 ## 🟡 Phase 7: Files & Bilder (Optional)
