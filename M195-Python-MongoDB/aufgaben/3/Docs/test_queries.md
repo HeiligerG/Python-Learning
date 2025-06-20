@@ -121,6 +121,7 @@ Top 3 Restaurants:
 3. Palombo Pastry Shop - Durchschnitt: 69.00
 ```
 
+## Dritte Funktion suchen vom geografisch nächstem Restaurant an Le Perigrord
 ### Code
 
 ```py
@@ -163,4 +164,94 @@ find_nearest_restaurant()
 Das naheste Restaurant zu Le Perigord
 - Name: Subway
 - Adresse: First Avenue
+```
+
+## Vierte Aufgabe: Restaurant Suche nach Name und Küche
+
+### Code
+
+```py
+def search_restaurants(name=None, cuisine=None):
+    """Restaurants nach Name und/oder Küche suchen (partiell)"""
+
+    query = {}
+
+    if name:
+        query["name"] = {"$regex": name, "$options": "i"}
+    if cuisine:
+        query["cuisine"] = {"$regex": cuisine, "$options": "i"}
+
+    results = collection.find(query).limit(10)
+
+    print("Gefundene Restaurants:")
+    for res in results:
+        print(f"- {res['name']} ({res['cuisine']})")
+
+    return list(collection.find(query))
+```
+
+### Beispiel-Aufruf
+
+```py
+app = RestaurantApp()
+print( app.search_restaurants(name="Steak", cuisine="American") )
+```
+
+### Ausgabe
+
+```shell
+Gefundene Restaurants:
+- Tad’s Steaks (American)
+- Frankie & Johnnie’s Steakhouse (American)
+- Old Homestead Steakhouse (American)
+
+```
+
+---
+
+## Fünfte Aufgabe: Restaurant bewerten
+
+### Code
+
+```py
+from datetime import datetime
+from bson.objectid import ObjectId
+
+def rate_restaurant(restaurant_id, score, grade="A"):
+    """Restaurant bewerten mit aktuellem Datum"""
+
+    rating = {
+        "date": datetime.utcnow(),
+        "score": score,
+        "grade": grade
+    }
+
+    result = collection.update_one(
+        {"_id": ObjectId(restaurant_id)},
+        {"$push": {"grades": rating}}
+    )
+
+    if result.modified_count:
+        print("Bewertung erfolgreich hinzugefügt.")
+    else:
+        print("Bewertung konnte nicht hinzugefügt werden.")
+```
+
+### Beispiel-Aufruf
+
+```py
+
+app = RestaurantApp()
+    restaurants = app.search_restaurants(name="Tad")
+    if restaurants:
+        restaurant_id = restaurants[0]["_id"]
+        app.rate_restaurant(restaurant_id)
+    else:
+        print("Kein Restaurant mit den Suchkriterien gefunden.")
+```
+
+### Ausgabe
+
+```shell
+Bewertung erfolgreich hinzugefügt.
 ```
