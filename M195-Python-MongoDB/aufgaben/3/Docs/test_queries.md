@@ -169,41 +169,37 @@ Das naheste Restaurant zu Le Perigord
 ## Vierte Aufgabe: Restaurant Suche nach Name und Küche
 
 ### Code
-
+restaurant_search.py
 ```py
-def search_restaurants(name=None, cuisine=None):
-    """Restaurants nach Name und/oder Küche suchen (partiell)"""
-
-    query = {}
-
-    if name:
-        query["name"] = {"$regex": name, "$options": "i"}
-    if cuisine:
-        query["cuisine"] = {"$regex": cuisine, "$options": "i"}
-
-    results = collection.find(query).limit(10)
-
-    print("Gefundene Restaurants:")
-    for res in results:
-        print(f"- {res['name']} ({res['cuisine']})")
-
-    return list(collection.find(query))
+def search_restaurants(self, name="", cuisine=""):
+        """Suche nach Name und/oder Küche"""
+        query = {}
+        
+        if name:
+            query["name"] = {"$regex": name, "$options": "i"}
+        
+        if cuisine:
+            query["cuisine"] = {"$regex": cuisine, "$options": "i"}
+        
+        results = list(self.collection.find(query))
+        return results
 ```
 
-### Beispiel-Aufruf
+### Beispiel Aufruf mit Ausgabe
 
-```py
-app = RestaurantApp()
-print( app.search_restaurants(name="Steak", cuisine="American") )
-```
-
-### Ausgabe
 
 ```shell
-Gefundene Restaurants:
-- Tad’s Steaks (American)
-- Frankie & Johnnie’s Steakhouse (American)
-- Old Homestead Steakhouse (American)
+python restaurant_search.py                                                                                                                                                       
+1. Restaurant suchen                                                                                                                                                                
+2. Beenden
+ 
+Auswahl: 1
+Name (optional): Le Perigord
+Küche (optional):
+ 
+1 Restaurant(s) gefunden:
+1. Le Perigord - French
+   ID: 5eb3d668b31de5d588f42994
 
 ```
 
@@ -211,47 +207,54 @@ Gefundene Restaurants:
 
 ## Fünfte Aufgabe: Restaurant bewerten
 
-### Code
-
+### Code 
+restaurant_search.py
 ```py
-from datetime import datetime
-from bson.objectid import ObjectId
-
-def rate_restaurant(restaurant_id, score, grade="A"):
-    """Restaurant bewerten mit aktuellem Datum"""
-
-    rating = {
-        "date": datetime.utcnow(),
-        "score": score,
-        "grade": grade
-    }
-
-    result = collection.update_one(
-        {"_id": ObjectId(restaurant_id)},
-        {"$push": {"grades": rating}}
-    )
-
-    if result.modified_count:
-        print("Bewertung erfolgreich hinzugefügt.")
-    else:
-        print("Bewertung konnte nicht hinzugefügt werden.")
+    def add_rating(self, restaurant_id, score, comment=""):
+        """Bewertung zu einem Restaurant hinzufügen"""
+        new_rating = {
+            "grade": "A",
+            "score": score,
+            "date": datetime.now(),
+            "comment": comment
+        }
+        
+        result = self.collection.update_one(
+            {"_id": restaurant_id},
+            {"$push": {"grades": new_rating}}
+        )
+        
+        if result.modified_count > 0:
+            print("Bewertung erfolgreich hinzugefügt!")
+        else:
+            print("Fehler beim Hinzufügen der Bewertung.")
+        
+        return result
 ```
 
-### Beispiel-Aufruf
-
-```py
-
-app = RestaurantApp()
-    restaurants = app.search_restaurants(name="Tad")
-    if restaurants:
-        restaurant_id = restaurants[0]["_id"]
-        app.rate_restaurant(restaurant_id)
-    else:
-        print("Kein Restaurant mit den Suchkriterien gefunden.")
-```
-
-### Ausgabe
+### Beispiel Aufruf mit Ausgabe
 
 ```shell
-Bewertung erfolgreich hinzugefügt.
+python restaurant_search.py                                                                                                                                                       
+1. Restaurant suchen                                                                                                                                                                
+2. Beenden
+ 
+Auswahl: 1
+Name (optional): Le Perigord
+Küche (optional):
+ 
+1 Restaurant(s) gefunden:
+1. Le Perigord - French
+   ID: 5eb3d668b31de5d588f42994
+ 
+Möchtest du dieses Restaurant bewerten? (j/n): j
+ 
+Restaurant bewerten
+--------------------
+Score (1-100): 99
+Kommentar (optional): Top
+Bewertung erfolgreich hinzugefügt!
+ 
+1. Restaurant suchen
+2. Beenden
 ```
